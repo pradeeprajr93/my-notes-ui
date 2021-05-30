@@ -13,6 +13,9 @@
 </mat-toolbar>
 
 <ngx-masonry [options]="{gutter: 15}">
+  <div *ngIf="!notes?.length" [style.textAlign]="'center'" [style.color]="'white'">
+    Add your first note!
+  </div>
   <div ngxMasonryItem class="masonry-item" *ngFor="let note of notes">
    <app-note-card 
    (edit)="openEditor($event)" 
