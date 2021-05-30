@@ -14,10 +14,13 @@
 
 <ngx-masonry [options]="{gutter: 15}">
   <div ngxMasonryItem class="masonry-item" *ngFor="let note of notes">
-   <app-note-card [note]="note"></app-note-card>
+   <app-note-card 
+   (edit)="openEditor($event)" 
+   (delete)="deleteNote($event)"
+   [note]="note"></app-note-card>
  </div>
 </ngx-masonry>
 
-<button mat-fab color="accent">
+<button (click)="openEditor()" mat-fab color="accent">
   <mat-icon>add</mat-icon>
 </button>

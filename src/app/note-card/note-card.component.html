@@ -6,13 +6,13 @@
         {{note?.content}}
     </div>
     <div class="actions">
-        <button mat-icon-button>
+        <button (click)="onEdit()" mat-icon-button>
             <mat-icon>edit_outline</mat-icon>
         </button>
-        <button mat-icon-button>
+        <!-- <button mat-icon-button>
             <mat-icon>palette_outline</mat-icon>
-        </button>
-        <button mat-icon-button>
+        </button> -->
+        <button (click)="onDelete()" mat-icon-button>
             <mat-icon>delete_outline</mat-icon>
         </button>
     </div>

@@ -1,1 +1,21 @@
-<p>note-editor-card works!</p>
+<!-- *ngIf="data.animal === 'panda'" -->
+
+<div class="container">
+    <mat-form-field appearance="fill" color="accent">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="data.note.title">
+    </mat-form-field>
+    <mat-form-field appearance="fill" color="accent">
+        <mat-label>Thoughts...</mat-label>
+        <textarea 
+        [(ngModel)]="data.note.content"
+        matInput cdkTextareaAutosize rows="10" cols="50"></textarea>
+    </mat-form-field>
+
+    <div class="actions">
+        <button 
+        [mat-dialog-close]="data.note"
+        mat-flat-button color="accent">Save</button>
+        <button (click)="onClose()" mat-flat-button>Discard</button>
+    </div>
+</div>

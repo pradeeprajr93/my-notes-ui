@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Note } from '../models/note';
 
 @Component({
   selector: 'app-note-editor-card',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteEditorCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<NoteEditorCardComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    console.log(this.data);
+  }
+
+  onClose() {
+    this.dialogRef.close();
   }
 
 }
