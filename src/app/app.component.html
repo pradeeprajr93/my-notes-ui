@@ -12,11 +12,12 @@
   </button>
 </mat-toolbar>
 
-<div class="notes-container">
-  <app-note-card></app-note-card>
-  <app-note-card></app-note-card>
-  <app-note-card></app-note-card>
-  <app-note-card></app-note-card>
-  <app-note-card></app-note-card>
-  <app-note-card></app-note-card>
-</div>
+<ngx-masonry [options]="{gutter: 15}">
+  <div ngxMasonryItem class="masonry-item" *ngFor="let note of notes">
+   <app-note-card [note]="note"></app-note-card>
+ </div>
+</ngx-masonry>
+
+<button mat-fab color="accent">
+  <mat-icon>add</mat-icon>
+</button>

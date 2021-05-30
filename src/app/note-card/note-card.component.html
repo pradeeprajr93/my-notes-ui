@@ -1,13 +1,14 @@
 <div class="card">
     <div class="title">
-        Kubernetes webinar
+        {{note?.title}}
     </div>
     <div class="content">
-    * Pods <br>
-    * Master <br>
-    * Config Map <br>
+        {{note?.content}}
     </div>
     <div class="actions">
+        <button mat-icon-button>
+            <mat-icon>edit_outline</mat-icon>
+        </button>
         <button mat-icon-button>
             <mat-icon>palette_outline</mat-icon>
         </button>

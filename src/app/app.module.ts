@@ -8,6 +8,8 @@ import { NoteEditorCardComponent } from './note-editor-card/note-editor-card.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxMasonryModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

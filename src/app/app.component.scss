@@ -12,6 +12,16 @@
     align-items: center;
 }
 
-.notes-container {
-    margin: 20px;
+ngx-masonry {
+    margin: 15px;
+}
+
+.masonry-item { 
+    width: 240px;
+}
+
+button[mat-fab] {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
 }
