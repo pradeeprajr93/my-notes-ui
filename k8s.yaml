@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-ui
+  template:
+    metadata:
+      labels:
+        app: notes-ui
+    spec:
+      containers:
+      - name: notes-ui
+        image: pradeeprajr93/notes-ui:v3
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        env:
+          - name: API_CONNECTION_STRING
+            value: www.giggle.com
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notes-ui-service
+spec:
+  type: NodePort
+  selector:
+    app: notes-ui
+  ports:
+  - port: 80
+    targetPort: 80

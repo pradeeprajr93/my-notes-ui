@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { AppService } from './app.service';
 import { Note } from './models/note';
 
 @Injectable({
@@ -8,29 +8,29 @@ import { Note } from './models/note';
 })
 export class NotesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private appService: AppService) { }
 
   getNotes(): Promise<Note[]> {
     return this.http
-    .get<Note[]>(environment.notes_api)
+    .get<Note[]>(this.appService.getEnvironment().API_CONNECTION_STRING)
     .toPromise();
   }
 
   createNote(note: Note): Promise<Note> {
     return this.http
-    .post<Note>(`${environment.notes_api}`, note)
+    .post<Note>(`${this.appService.getEnvironment().API_CONNECTION_STRING}`, note)
     .toPromise();
   }
 
   updateNote(note: Note): Promise<Note> {
     return this.http
-    .put<Note>(`${environment.notes_api}${note._id}/edit`, note)
+    .put<Note>(`${this.appService.getEnvironment().API_CONNECTION_STRING}/${note._id}/edit`, note)
     .toPromise();
   }
 
   deleteNode(id: string): Promise<String> {
     return this.http
-    .delete<string>(`${environment.notes_api}${id}/delete`)
+    .delete<string>(`${this.appService.getEnvironment().API_CONNECTION_STRING}/${id}/delete`)
     .toPromise();
   }
 

@@ -4,9 +4,14 @@ WORKDIR /app
 COPY package*json .
 RUN npm install
 COPY . .
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 # STAGE 2: RUN
-FROM nginx:1.17-alpine
+FROM nginx
+RUN apt update
+RUN apt install -y python3
 COPY --from=build /app/dist/my-notes /usr/share/nginx/html
+COPY --from=build /app/dist/my-notes/assets/scripts/entrypoint.sh /app/entrypoint.sh
 EXPOSE 80
+RUN chmod u+x /app/entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]

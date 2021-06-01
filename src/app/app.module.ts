@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,11 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { AppService } from './app.service';
+
+export function init_app(appService: AppService) {
+  return () => {};
+}
 
 @NgModule({
   declarations: [
@@ -37,7 +42,14 @@ import { TextFieldModule } from '@angular/cdk/text-field';
     MatInputModule,
     TextFieldModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: init_app,
+      multi: true,
+      deps: [AppService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
