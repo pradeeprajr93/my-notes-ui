@@ -12,22 +12,15 @@ spec:
       labels:
         app: notes-ui
     spec:
-      volumes:
-        - name: env-read-volume
-          configMap:
-            name: notes-api-config
       containers:
       - name: notes-ui
-        image: pradeeprajr93/notes-ui:v6
+        image: pradeeprajr93/notes-ui:v10
         resources:
           limits:
             memory: "512Mi"
             cpu: "500m"
         ports:
         - containerPort: 80
-        volumeMounts:
-          - name: env-read-volume
-            mountPath: /usr/share/nginx/html/assets/
         env:
           - name: API_CONNECTION_STRING
             value: www.giggle.com

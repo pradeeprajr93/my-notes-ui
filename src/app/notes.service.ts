@@ -12,25 +12,25 @@ export class NotesService {
 
   getNotes(): Promise<Note[]> {
     return this.http
-    .get<Note[]>(this.appService.getEnvironment().API_CONNECTION_STRING)
+    .get<Note[]>('/notes')
     .toPromise();
   }
 
   createNote(note: Note): Promise<Note> {
     return this.http
-    .post<Note>(`${this.appService.getEnvironment().API_CONNECTION_STRING}`, note)
+    .post<Note>(`/notes`, note)
     .toPromise();
   }
 
   updateNote(note: Note): Promise<Note> {
     return this.http
-    .put<Note>(`${this.appService.getEnvironment().API_CONNECTION_STRING}/${note._id}/edit`, note)
+    .put<Note>(`/notes/${note._id}/edit`, note)
     .toPromise();
   }
 
   deleteNode(id: string): Promise<String> {
     return this.http
-    .delete<string>(`${this.appService.getEnvironment().API_CONNECTION_STRING}/${id}/delete`)
+    .delete<string>(`/notes/${id}/delete`)
     .toPromise();
   }
 
