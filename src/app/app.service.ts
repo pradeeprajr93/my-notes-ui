@@ -1,12 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import *  as  data from '../assets/env.json';
 @Injectable({
     providedIn: 'root'
 })
 
 export class AppService {
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.load().then(data => console.log(data));
     }
 
@@ -18,8 +18,10 @@ export class AppService {
 
     public load(): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.env = data;
-            resolve(true);
+            this.http.get('assets/env.json').subscribe((response: any) => {
+                this.env = response;
+                resolve(this.env);
+            });
         });
     }
 

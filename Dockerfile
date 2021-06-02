@@ -7,11 +7,6 @@ COPY . .
 RUN npm run build
 
 # STAGE 2: RUN
-FROM nginx
-RUN apt update
-RUN apt install -y python3
+FROM nginx:1.21-alpine
 COPY --from=build /app/dist/my-notes /usr/share/nginx/html
-COPY --from=build /app/dist/my-notes/assets/scripts/entrypoint.sh /app/entrypoint.sh
 EXPOSE 80
-RUN chmod u+x /app/entrypoint.sh
-ENTRYPOINT ["/app/entrypoint.sh"]
