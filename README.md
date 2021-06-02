@@ -1,5 +1,7 @@
 # MyNotes
 
+![App screenshot](https://user-images.githubusercontent.com/9554901/120470166-c4d70700-c392-11eb-8114-bcfd8e41e3f1.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
 
 ## Development server
