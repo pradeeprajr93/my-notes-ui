@@ -21,9 +21,6 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 80
-        env:
-          - name: API_CONNECTION_STRING
-            value: www.giggle.com
 
 ---
 
